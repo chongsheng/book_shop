@@ -1,0 +1,30 @@
+ibw_orders:
+    pattern:  /
+    defaults: { _controller: "IbwJobeetBundle:Orders:index" }
+
+ibw_orders_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "IbwJobeetBundle:Orders:show" }
+
+ibw_orders_new:
+    pattern:  /new
+    defaults: { _controller: "IbwJobeetBundle:Orders:new" }
+
+ibw_orders_create:
+    pattern:  /create
+    defaults: { _controller: "IbwJobeetBundle:Orders:create" }
+    requirements: { _method: post }
+
+ibw_orders_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "IbwJobeetBundle:Orders:edit" }
+
+ibw_orders_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "IbwJobeetBundle:Orders:update" }
+    requirements: { _method: post|put }
+
+ibw_orders_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "IbwJobeetBundle:Orders:delete" }
+    requirements: { _method: post|delete }

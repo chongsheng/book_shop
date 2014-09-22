@@ -1,0 +1,19 @@
+admin_manage_homepage:
+    pattern:  /
+    defaults: { _controller: AdminManageBundle:Default:index }
+
+admin_goods:
+        resource: "@AdminManageBundle/Resources/config/routing/goods.yml"
+        prefix:   /goods
+        
+admin_msg:
+        resource: "@AdminManageBundle/Resources/config/routing/msg.yml"
+        prefix:   /msg
+        
+admin_orders:
+        resource: "@AdminManageBundle/Resources/config/routing/orders.yml"
+        prefix:   /orders
+        
+admin_user:
+        resource: "@AdminManageBundle/Resources/config/routing/user.yml"
+        prefix:   /user

@@ -1,0 +1,46 @@
+Admin\ManageBundle\Entity\Orders:
+    type: entity
+    table: orders
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        goodId:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: good_id
+        name:
+            type: string
+            unsigned: false
+            nullable: false
+            column: name
+        price:
+            type: decimal
+            unsigned: false
+            nullable: false
+            column: price
+        totalMoney:
+            type: decimal
+            nullable: false
+            column: total_money
+        buyTime:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: buy_time
+        status:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: status
+    lifecycleCallbacks:     
+        prePersist: [pre_set_defualt_values ]
+        preUpdate: [ ]
+        postPersist: [  ]
+        postUpdate: [  ]
+        postRemove: [ ]

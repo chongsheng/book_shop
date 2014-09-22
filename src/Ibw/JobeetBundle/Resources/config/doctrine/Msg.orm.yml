@@ -1,0 +1,36 @@
+Ibw\JobeetBundle\Entity\Msg:
+    type: entity
+    table: msg
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        message:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        addTime:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: add_time
+        status:
+            type: integer
+            unsigned: false
+            nullable: true
+        title:
+            type: string
+            length: 50
+            fixed: false
+            nullable: false
+        replay:
+            type: string
+            length: 50
+            fixed: false
+            nullable: true
+    lifecycleCallbacks: {  }

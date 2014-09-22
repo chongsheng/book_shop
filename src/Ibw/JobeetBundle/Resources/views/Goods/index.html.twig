@@ -1,0 +1,40 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Goods list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Img</th>
+                <th>Issell</th>
+                <th>Demo</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('ibw_goods_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.name }}</td>
+                <td>{{ entity.price }}</td>
+                <td>{{ entity.img }}</td>
+                <td>{{ entity.issell }}</td>
+                <td>{{ entity.demo }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('ibw_goods_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% endblock %}

@@ -1,0 +1,30 @@
+ibw_msg:
+    pattern:  /
+    defaults: { _controller: "IbwJobeetBundle:Msg:index" }
+
+ibw_msg_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "IbwJobeetBundle:Msg:show" }
+
+ibw_msg_new:
+    pattern:  /new
+    defaults: { _controller: "IbwJobeetBundle:Msg:new" }
+
+ibw_msg_create:
+    pattern:  /create
+    defaults: { _controller: "IbwJobeetBundle:Msg:create" }
+    requirements: { _method: post }
+
+ibw_msg_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "IbwJobeetBundle:Msg:edit" }
+
+ibw_msg_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "IbwJobeetBundle:Msg:update" }
+    requirements: { _method: post|put }
+
+ibw_msg_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "IbwJobeetBundle:Msg:delete" }
+    requirements: { _method: post|delete }

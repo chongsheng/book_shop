@@ -1,0 +1,30 @@
+admin_goods:
+    pattern:  /
+    defaults: { _controller: "AdminManageBundle:Goods:index" }
+
+admin_goods_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "AdminManageBundle:Goods:show" }
+
+admin_goods_new:
+    pattern:  /new
+    defaults: { _controller: "AdminManageBundle:Goods:new" }
+
+admin_goods_create:
+    pattern:  /create
+    defaults: { _controller: "AdminManageBundle:Goods:create" }
+    requirements: { _method: post }
+
+admin_goods_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "AdminManageBundle:Goods:edit" }
+
+admin_goods_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "AdminManageBundle:Goods:update" }
+    requirements: { _method: post|put }
+
+admin_goods_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "AdminManageBundle:Goods:delete" }
+    requirements: { _method: post|delete }

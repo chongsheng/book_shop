@@ -1,0 +1,14 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: 127.0.0.1
+    database_port: 3306
+    database_name: book_shop
+    database_user: root
+    database_password: root
+    mailer_transport: gmail
+    mailer_host: 127.0.0.1
+    mailer_user: chxy24213021@163.com
+    mailer_password: 24213021
+    locale: en
+    secret: ThisTokenIsNotSoSecretChangeIt

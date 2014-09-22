@@ -1,0 +1,161 @@
+
+http://www.ens.ro/2013/08/08/jobeet-tutorial-for-symfony2-3/
+
+http://www.intelligentbee.com/blog/2013/08/07/symfony2-jobeet-day-1-starting-up-the-project/
+//一键安装项目
+php composer.phar create-project symfony/framework-standard-edition syfmoney/ 2.3.0
+
+第一章：
+
+1.下载symfony2.3  without vendors
+
+2.在项目的根目下 安装composer
+curl -s https://getcomposer.org/installer | php
+（如果没有curl 命令需要先安装：sudo apt-get install curl） linux
+
+-------------------------------check----------------------------------------
+composer diagnose 检查版本
+
+
+-----------------------------------------------------------------------------
+
+3.安装verdor 依赖包
+php composer.phar install
+
+4.查看命令 
+
+php app/console list
+
+5.生成bundle
+
+php app/console generate:bundle --namespace=Ibw/JobeetBundle
+
+6.生成产品环境和开发环境 并清理缓存
+php app/console cache:clear --env=prod
+php app/console cache:clear --env=dev
+
+第2章：
+7。数据库创建
+php app/console doctrine:database:create
+
+第3 章：
+8.根据yml 生成 实体对象
+
+php app/console doctrine:generate:entities IbwJobeetBundle
+（注：2.3 官方文档中有误，默认实体生成的yml 应放到 config/doctrine 中）
+
+9.生成表
+	
+php app/console doctrine:schema:update --force
+
+
+ 
+10 配置  composer.json 配置测试数据
+
+require": {
+        // ...
+        "doctrine/doctrine-fixtures-bundle": "dev-master",
+        "doctrine/data-fixtures": "dev-master"
+    },
+
+更新 命令： php composer.phar update
+
+更新 app/AppKernel.php
+
+public function registerBundles()
+{
+    $bundles = array(
+        // ...
+        new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle()
+    );
+ 
+    // ...
+}
+
+导入数据
+php app/console doctrine:fixtures:load
+
+
+11.生成action 的crud
+php app/console doctrine:generate:crud --entity=IbwJobeetBundle:Job --route-prefix=ibw_job --with-write --format=yml
+
+12，配置  src/Ibw/JobeetBundle/Resources/config/routing/job.yml
+
+IbwJobeetBundle_job:
+        resource: "@IbwJobeetBundle/Resources/config/routing/job.yml"
+        prefix:   /job
+
+13.
+php app/console cache:clear --env=dev
+php app/console cache:clear --env=prod
+
+14.导入css ，image 文件
+
+php app/console assets:install web --symlink
+
+
+15.url degug 检查url
+
+php app/console router:debug
+
+
+php app/console router:debug ibw_job_show
+
+16.生成model 、action 简的Repository（库），也是生成实体的命令
+php app/console doctrine:generate:entities IbwJobeetBundle
+
+
+
+17.数据库操作
+	
+php app/console doctrine:database:drop --force
+php app/console doctrine:database:create
+php app/console doctrine:schema:update --force
+php app/console doctrine:fixtures:locdad
+
+
+
+18.test 
+
+//sudo apt-get install phpunit
+pear channel-discover pear.phpunit.de
+pear channel-discover pear.symfony-project.com
+pear channel-discover components.ez.no
+pear channel-discover pear.symfony.com
+pear update-channels
+pear upgrade-all
+pear install pear.symfony.com/Yaml
+pear install --alldeps phpunit/PHPUnit
+pear install --force --alldeps phpunit/PHPUnit
+
+检查是否成功：phpunit -c app/
+
+
+运行测试文件：phpunit -c app/ src/Ibw/JobeetBundle/Tests/Utils/JobeetTest
+
+admin : http://localhost/jobeet2.3/web/app_dev.php/admin/dashboard
+
+
+php app/console ibw:jobeet:users admin admin
+
+//is here
+http://www.intelligentbee.com/blog/2013/08/20/symfony2-jobeet-day-14-feeds/
+
+
+http://www.intelligentbee.com/blog/2013/08/24/symfony2-jobeet-day-16-the-mailer/
+http://www.intelligentbee.com/blog/2013/09/09/symfony2-jobeet-day-19-internationalization-and-localization/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

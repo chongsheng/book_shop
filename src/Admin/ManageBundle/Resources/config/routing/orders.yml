@@ -1,0 +1,30 @@
+admin_orders:
+    pattern:  /
+    defaults: { _controller: "AdminManageBundle:Orders:index" }
+
+admin_orders_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "AdminManageBundle:Orders:show" }
+
+admin_orders_new:
+    pattern:  /new
+    defaults: { _controller: "AdminManageBundle:Orders:new" }
+
+admin_orders_create:
+    pattern:  /create
+    defaults: { _controller: "AdminManageBundle:Orders:create" }
+    requirements: { _method: post }
+
+admin_orders_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "AdminManageBundle:Orders:edit" }
+
+admin_orders_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "AdminManageBundle:Orders:update" }
+    requirements: { _method: post|put }
+
+admin_orders_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "AdminManageBundle:Orders:delete" }
+    requirements: { _method: post|delete }

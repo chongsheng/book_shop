@@ -1,0 +1,30 @@
+admin_msg:
+    pattern:  /
+    defaults: { _controller: "AdminManageBundle:Msg:index" }
+
+admin_msg_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "AdminManageBundle:Msg:show" }
+
+admin_msg_new:
+    pattern:  /new
+    defaults: { _controller: "AdminManageBundle:Msg:new" }
+
+admin_msg_create:
+    pattern:  /create
+    defaults: { _controller: "AdminManageBundle:Msg:create" }
+    requirements: { _method: post }
+
+admin_msg_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "AdminManageBundle:Msg:edit" }
+
+admin_msg_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "AdminManageBundle:Msg:update" }
+    requirements: { _method: post|put }
+
+admin_msg_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "AdminManageBundle:Msg:delete" }
+    requirements: { _method: post|delete }

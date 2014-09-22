@@ -1,0 +1,47 @@
+#主页url
+homepage:
+    pattern:  /
+    defaults: { _controller: IbwJobeetBundle:Default:index } 
+
+# ...
+ibw_jobeet_homepage:
+    pattern:  /{_locale}/
+    defaults: { _controller: IbwJobeetBundle:Default:index }
+    requirements: 
+        _locale: en|fr|zh
+# ...    
+login:
+    pattern: /login
+    defaults: { _controller: IbwJobeetBundle:Default:login }
+    methods:  [GET]
+
+login_check:
+    pattern: /login_check
+    defaults: { _controller: IbwJobeetBundle:Default:login_check }
+    methods:  [POST]
+
+logout:
+    pattern: /logout
+    defaults: { _controller: IbwJobeetBundle:Default:logout }
+    methods:  [GET]
+
+
+IbwJobeetBundle_changeLanguage:
+    pattern: /change_language
+    defaults: { _controller: "IbwJobeetBundle:Default:changeLanguage" }
+    
+IbwJobeetBundle_users:
+    resource: "@IbwJobeetBundle/Resources/config/routing/user.yml"
+    prefix:   /{_locale}/user
+
+IbwJobeetBundle_msg:
+    resource: "@IbwJobeetBundle/Resources/config/routing/msg.yml"
+    prefix:   /{_locale}/msg
+
+IbwJobeetBundle_ibw_goods:
+    resource: "@IbwJobeetBundle/Resources/config/routing/goods.yml"
+    prefix:   /{_locale}/goods
+
+IbwJobeetBundle_ibw_orders:
+    resource: "@IbwJobeetBundle/Resources/config/routing/orders.yml"
+    prefix:   /{_locale}/orders

@@ -1,0 +1,7 @@
+ibw_goods:
+    pattern:  /
+    defaults: { _controller: "IbwJobeetBundle:Goods:index" }
+
+ibw_goods_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "IbwJobeetBundle:Goods:show" }

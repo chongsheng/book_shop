@@ -1,0 +1,38 @@
+Ibw\JobeetBundle\Entity\Goods:
+    type: entity
+    table: goods
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        name:
+            type: string
+            length: 50
+            fixed: false
+            nullable: false
+        price:
+            type: decimal
+            nullable: false
+        img:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        issell:
+            type: integer
+            unsigned: false
+            nullable: false
+        demo:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        status:
+            type: integer
+            fixed: false
+            nullable: true
+    lifecycleCallbacks: {  }

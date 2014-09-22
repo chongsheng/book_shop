@@ -1,0 +1,27 @@
+Ibw\JobeetBundle\Entity\User:
+    type: entity
+    repositoryClass: Ibw\JobeetBundle\Repository\UserRepository
+    table: user
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        username:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        password:
+            type: string
+            length: 255
+            fixed: false
+            nullable: false
+        status:
+            type: integer
+            unsigned: false
+            nullable: false
+    lifecycleCallbacks: {  }

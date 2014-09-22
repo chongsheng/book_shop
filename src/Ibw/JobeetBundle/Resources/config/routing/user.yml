@@ -1,0 +1,30 @@
+ibw_user:
+    pattern:  /
+    defaults: { _controller: "IbwJobeetBundle:User:index" }
+
+ibw_user_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "IbwJobeetBundle:User:show" }
+
+ibw_user_new:
+    pattern:  /new
+    defaults: { _controller: "IbwJobeetBundle:User:new" }
+
+ibw_user_create:
+    pattern:  /create
+    defaults: { _controller: "IbwJobeetBundle:User:create" }
+    requirements: { _method: post }
+
+ibw_user_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "IbwJobeetBundle:User:edit" }
+
+ibw_user_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "IbwJobeetBundle:User:update" }
+    requirements: { _method: post|put }
+
+ibw_user_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "IbwJobeetBundle:User:delete" }
+    requirements: { _method: post|delete }

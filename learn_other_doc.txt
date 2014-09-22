@@ -1,0 +1,7 @@
+http://www.cnblogs.com/Seekr/archive/2012/06/30/2570103.html  symfony2 http 缓存
+
+翻译比较好symfoney2 的book 文档
+http://www.cnblogs.com/Seekr/tag/Symfony2/ 
+
+symfony2 blog 项目地址
+http://twpug.net/docs/symblog/

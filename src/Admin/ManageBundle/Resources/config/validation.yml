@@ -1,0 +1,16 @@
+Admin\ManageBundle\Entity\User:
+    properties:
+        username:
+            - NotBlank: ~
+        password:
+            - NotBlank: ~
+#affiliate
+Admin\ManageBundle\Entity\Affiliate:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: email
+    properties:
+        url:
+            - Url: ~
+        email:
+            - NotBlank: ~
+            - Email: ~
