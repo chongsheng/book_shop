@@ -1,9 +1,9 @@
-admin_manage:
-    resource: "@AdminManageBundle/Resources/config/routing.yml"
-    prefix:   /admin
-
-
 ibw_jobeet:
     resource: "@IbwJobeetBundle/Resources/config/routing.yml"
     prefix:   /
- 
+
+admin_manage:
+    resource: "@AdminManageBundle/Resources/config/routing.yml"
+    prefix:   /manager
+
+    

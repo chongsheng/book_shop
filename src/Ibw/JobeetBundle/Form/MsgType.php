@@ -14,6 +14,7 @@ class MsgType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        
         $builder
             ->add('message')
             ->add('title');

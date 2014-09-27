@@ -732,7 +732,7 @@
       </argument>
       <call method="setFallbackLocales">
         <argument type="collection">
-          <argument>en</argument>
+          <argument>zh</argument>
         </argument>
       </call>
       <call method="addResource">
@@ -1409,14 +1409,8 @@
       </call>
       <call method="addResource">
         <argument>xlf</argument>
-        <argument>/Applications/XAMPP/xamppfiles/htdocs/book_shop/src/Ibw/JobeetBundle/Resources/translations/messages.fr.xlf</argument>
-        <argument>fr</argument>
-        <argument>messages</argument>
-      </call>
-      <call method="addResource">
-        <argument>xlf</argument>
-        <argument>/Applications/XAMPP/xamppfiles/htdocs/book_shop/src/Ibw/JobeetBundle/Resources/translations/messages.zh.xlf</argument>
-        <argument>zh</argument>
+        <argument>/Applications/XAMPP/xamppfiles/htdocs/book_shop/src/Ibw/JobeetBundle/Resources/translations/messages.en.xlf</argument>
+        <argument>en</argument>
         <argument>messages</argument>
       </call>
       <call method="addResource">

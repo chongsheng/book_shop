@@ -14,6 +14,7 @@ class OrdersType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        echo "admin";exit;
         $builder
             ->add('goodId')
             ->add('name')

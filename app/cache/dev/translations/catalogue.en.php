@@ -97,7 +97,17 @@ $catalogue = new MessageCatalogue('en', array (
     'Account is disabled.' => 'Account is disabled.',
     'Account is locked.' => 'Account is locked.',
   ),
+  'messages' => 
+  array (
+    '登录' => 'Login',
+    '登出' => 'LgOut',
+    '书友会' => 'book frends ',
+  ),
 ));
+
+$catalogueZh = new MessageCatalogue('zh', array (
+));
+$catalogue->addFallbackCatalogue($catalogueZh);
 
 
 return $catalogue;

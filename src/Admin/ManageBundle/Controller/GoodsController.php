@@ -59,6 +59,7 @@ class GoodsController extends Controller
      */
     public function newAction()
     {
+        
         $entity = new Goods();
         $form   = $this->createForm(new GoodsType(), $entity);
 

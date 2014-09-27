@@ -1,19 +1,32 @@
 admin_manage_homepage:
     pattern:  /
+    defaults: { _controller: AdminManageBundle:Goods:index }
+    
+admin_login:
+    pattern: /login
     defaults: { _controller: AdminManageBundle:Default:index }
+ 
 
+admin_login_check:
+    pattern: /login_check
+    defaults: { _controller: AdminManageBundle:Default:login_check }
+    methods:  [POST]
+    
+admin_logout:
+    pattern: /logout
+    
 admin_goods:
-        resource: "@AdminManageBundle/Resources/config/routing/goods.yml"
-        prefix:   /goods
+    resource: "@AdminManageBundle/Resources/config/routing/goods.yml"
+    prefix:   /m_goods
         
 admin_msg:
-        resource: "@AdminManageBundle/Resources/config/routing/msg.yml"
-        prefix:   /msg
+    resource: "@AdminManageBundle/Resources/config/routing/msg.yml"
+    prefix:   /m_msg
         
 admin_orders:
-        resource: "@AdminManageBundle/Resources/config/routing/orders.yml"
-        prefix:   /orders
+    resource: "@AdminManageBundle/Resources/config/routing/orders.yml"
+    prefix:   /m_orders
         
 admin_user:
-        resource: "@AdminManageBundle/Resources/config/routing/user.yml"
-        prefix:   /user
+     resource: "@AdminManageBundle/Resources/config/routing/user.yml"
+     prefix:   /m_user

@@ -17,7 +17,6 @@ class MsgType extends AbstractType
         $builder
             ->add('message')
             ->add('addTime')
-            ->add('status')
             ->add('title')
             ->add('replay');
     }

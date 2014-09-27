@@ -2627,7 +2627,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['translator.default'] = $instance = new \Symfony\Bundle\FrameworkBundle\Translation\Translator($this, new \Symfony\Component\Translation\MessageSelector(), array('translation.loader.php' => array(0 => 'php'), 'translation.loader.yml' => array(0 => 'yml'), 'translation.loader.xliff' => array(0 => 'xlf', 1 => 'xliff'), 'translation.loader.po' => array(0 => 'po'), 'translation.loader.mo' => array(0 => 'mo'), 'translation.loader.qt' => array(0 => 'ts'), 'translation.loader.csv' => array(0 => 'csv'), 'translation.loader.res' => array(0 => 'res'), 'translation.loader.dat' => array(0 => 'dat'), 'translation.loader.ini' => array(0 => 'ini')), array('cache_dir' => '/Applications/XAMPP/xamppfiles/htdocs/book_shop/app/cache/dev/translations', 'debug' => true));
 
-        $instance->setFallbackLocales(array(0 => 'en'));
+        $instance->setFallbackLocales(array(0 => 'zh'));
         $instance->addResource('xlf', '/Applications/XAMPP/xamppfiles/htdocs/book_shop/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.af.xlf', 'af', 'validators');
         $instance->addResource('xlf', '/Applications/XAMPP/xamppfiles/htdocs/book_shop/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ar.xlf', 'ar', 'validators');
         $instance->addResource('xlf', '/Applications/XAMPP/xamppfiles/htdocs/book_shop/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.bg.xlf', 'bg', 'validators');
@@ -2740,8 +2740,7 @@ class appDevDebugProjectContainer extends Container
         $instance->addResource('xlf', '/Applications/XAMPP/xamppfiles/htdocs/book_shop/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../../Resources/translations/security.sv.xlf', 'sv', 'security');
         $instance->addResource('xlf', '/Applications/XAMPP/xamppfiles/htdocs/book_shop/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../../Resources/translations/security.tr.xlf', 'tr', 'security');
         $instance->addResource('xlf', '/Applications/XAMPP/xamppfiles/htdocs/book_shop/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../../Resources/translations/security.ua.xlf', 'ua', 'security');
-        $instance->addResource('xlf', '/Applications/XAMPP/xamppfiles/htdocs/book_shop/src/Ibw/JobeetBundle/Resources/translations/messages.fr.xlf', 'fr', 'messages');
-        $instance->addResource('xlf', '/Applications/XAMPP/xamppfiles/htdocs/book_shop/src/Ibw/JobeetBundle/Resources/translations/messages.zh.xlf', 'zh', 'messages');
+        $instance->addResource('xlf', '/Applications/XAMPP/xamppfiles/htdocs/book_shop/src/Ibw/JobeetBundle/Resources/translations/messages.en.xlf', 'en', 'messages');
         $instance->addResource('xlf', '/Applications/XAMPP/xamppfiles/htdocs/book_shop/src/Admin/ManageBundle/Resources/translations/messages.fr.xlf', 'fr', 'messages');
 
         return $instance;

@@ -52,37 +52,70 @@ class __TwigTemplate_8180dc35a938ef97905eee5c76c8618e extends Twig_Template
             <span class=\"icon-bar\"></span>
             <span class=\"icon-bar\"></span>
           </button>
-          <a class=\"navbar-brand\" href=\"#\">book sell</a>
+            <a class=\"navbar-brand\" href=\"#\">";
+        // line 34
+        echo $this->env->getExtension('translator')->getTranslator()->trans("书友会", array(), "messages");
+        echo "</a>
         </div>
-         <div id=\"navbar\" class=\"navbar-right\">
+        
+       <div id=\"navbar\" class=\"navbar-right\">
+             <form action=\"";
+        // line 38
+        echo $this->env->getExtension('routing')->getPath("IbwJobeetBundle_changeLanguage");
+        echo "\" method=\"get\">
+                <label>";
+        // line 39
+        echo $this->env->getExtension('translator')->getTranslator()->trans("语言", array(), "messages");
+        echo "</label>
+                    <select name=\"language\">
+                        <option value=\"zh\" ";
+        // line 41
+        if (($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "request"), "get", array(0 => "_locale"), "method") == "zh")) {
+            echo "selected=\"selected\"";
+        }
+        echo ">zh</option>
+                        <option value=\"en\" ";
+        // line 42
+        if (($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "request"), "get", array(0 => "_locale"), "method") == "en")) {
+            echo "selected=\"selected\"";
+        }
+        echo ">English</option>
+                       
+                    </select>
+                <input type=\"submit\" value=\"Ok\"> 
+           </form>
+        </div>
+            &nbsp;   &nbsp;     
+          <div id=\"navbar\" class=\"navbar-right\">
            <span class=\"label label-success\">
            
            ";
-        // line 39
+        // line 52
         if ($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session"), "get", array(0 => "user_name"), "method")) {
-            // line 40
+            // line 53
             echo "                ";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session"), "get", array(0 => "user_name"), "method"), "html", null, true);
             echo "  &nbsp;&nbsp;&nbsp;
                 
                 <a href=\"";
-            // line 42
+            // line 55
             echo $this->env->getExtension('routing')->getPath("logout");
-            echo "\"> logout</a>
+            echo "\">登出</a>
                 
             ";
         } else {
-            // line 45
+            // line 58
             echo "                <a href=\"";
             echo $this->env->getExtension('routing')->getPath("login");
             echo "\">";
-            echo $this->env->getExtension('translator')->getTranslator()->trans("test trans", array(), "messages");
+            echo $this->env->getExtension('translator')->getTranslator()->trans("登录", array(), "messages");
             echo "</a>
            ";
         }
-        // line 47
+        // line 60
         echo "           </span>
-        </div>
+           
+         </div>
         <!--/.navbar-collapse -->
       </div>
     </nav>
@@ -92,7 +125,10 @@ class __TwigTemplate_8180dc35a938ef97905eee5c76c8618e extends Twig_Template
       <div class=\"container\">
         <h1>Hello, world!</h1>
         <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class=\"btn btn-primary btn-lg\" role=\"button\">Learn more &raquo;</a></p>
+        <p><a class=\"btn btn-primary btn-lg\" role=\"button\"  href=\"";
+        // line 72
+        echo $this->env->getExtension('routing')->getPath("ibw_msg_new");
+        echo "\">留言 &raquo;</a></p>
       </div>
     </div>
 
@@ -128,11 +164,11 @@ class __TwigTemplate_8180dc35a938ef97905eee5c76c8618e extends Twig_Template
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src=\"";
-        // line 93
+        // line 107
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/ibwjobeet/js/jquery.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 94
+        // line 108
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/ibwjobeet/js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
@@ -153,6 +189,6 @@ class __TwigTemplate_8180dc35a938ef97905eee5c76c8618e extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  136 => 94,  132 => 93,  84 => 47,  76 => 45,  70 => 42,  64 => 40,  62 => 39,  34 => 14,  19 => 1,);
+        return array (  172 => 108,  168 => 107,  130 => 72,  116 => 60,  108 => 58,  102 => 55,  96 => 53,  94 => 52,  79 => 42,  73 => 41,  68 => 39,  64 => 38,  57 => 34,  34 => 14,  19 => 1,);
     }
 }

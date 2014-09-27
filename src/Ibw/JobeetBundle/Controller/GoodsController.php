@@ -37,6 +37,7 @@ class GoodsController extends Controller
      */
     public function showAction($id)
     {
+        
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('IbwJobeetBundle:Goods')->find($id);

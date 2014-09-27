@@ -133,258 +133,6 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        if (0 === strpos($pathinfo, '/admin')) {
-            // admin_manage_homepage
-            if (rtrim($pathinfo, '/') === '/admin') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'admin_manage_homepage');
-                }
-
-                return array (  '_controller' => 'Admin\\ManageBundle\\Controller\\DefaultController::indexAction',  '_route' => 'admin_manage_homepage',);
-            }
-
-            if (0 === strpos($pathinfo, '/admin/goods')) {
-                // admin_goods
-                if (rtrim($pathinfo, '/') === '/admin/goods') {
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'admin_goods');
-                    }
-
-                    return array (  '_controller' => 'Admin\\ManageBundle\\Controller\\GoodsController::indexAction',  '_route' => 'admin_goods',);
-                }
-
-                // admin_goods_show
-                if (preg_match('#^/admin/goods/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_goods_show')), array (  '_controller' => 'Admin\\ManageBundle\\Controller\\GoodsController::showAction',));
-                }
-
-                // admin_goods_new
-                if ($pathinfo === '/admin/goods/new') {
-                    return array (  '_controller' => 'Admin\\ManageBundle\\Controller\\GoodsController::newAction',  '_route' => 'admin_goods_new',);
-                }
-
-                // admin_goods_create
-                if ($pathinfo === '/admin/goods/create') {
-                    if ($this->context->getMethod() != 'POST') {
-                        $allow[] = 'POST';
-                        goto not_admin_goods_create;
-                    }
-
-                    return array (  '_controller' => 'Admin\\ManageBundle\\Controller\\GoodsController::createAction',  '_route' => 'admin_goods_create',);
-                }
-                not_admin_goods_create:
-
-                // admin_goods_edit
-                if (preg_match('#^/admin/goods/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_goods_edit')), array (  '_controller' => 'Admin\\ManageBundle\\Controller\\GoodsController::editAction',));
-                }
-
-                // admin_goods_update
-                if (preg_match('#^/admin/goods/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                        $allow = array_merge($allow, array('POST', 'PUT'));
-                        goto not_admin_goods_update;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_goods_update')), array (  '_controller' => 'Admin\\ManageBundle\\Controller\\GoodsController::updateAction',));
-                }
-                not_admin_goods_update:
-
-                // admin_goods_delete
-                if (preg_match('#^/admin/goods/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                        $allow = array_merge($allow, array('POST', 'DELETE'));
-                        goto not_admin_goods_delete;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_goods_delete')), array (  '_controller' => 'Admin\\ManageBundle\\Controller\\GoodsController::deleteAction',));
-                }
-                not_admin_goods_delete:
-
-            }
-
-            if (0 === strpos($pathinfo, '/admin/msg')) {
-                // admin_msg
-                if (rtrim($pathinfo, '/') === '/admin/msg') {
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'admin_msg');
-                    }
-
-                    return array (  '_controller' => 'Admin\\ManageBundle\\Controller\\MsgController::indexAction',  '_route' => 'admin_msg',);
-                }
-
-                // admin_msg_show
-                if (preg_match('#^/admin/msg/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_msg_show')), array (  '_controller' => 'Admin\\ManageBundle\\Controller\\MsgController::showAction',));
-                }
-
-                // admin_msg_new
-                if ($pathinfo === '/admin/msg/new') {
-                    return array (  '_controller' => 'Admin\\ManageBundle\\Controller\\MsgController::newAction',  '_route' => 'admin_msg_new',);
-                }
-
-                // admin_msg_create
-                if ($pathinfo === '/admin/msg/create') {
-                    if ($this->context->getMethod() != 'POST') {
-                        $allow[] = 'POST';
-                        goto not_admin_msg_create;
-                    }
-
-                    return array (  '_controller' => 'Admin\\ManageBundle\\Controller\\MsgController::createAction',  '_route' => 'admin_msg_create',);
-                }
-                not_admin_msg_create:
-
-                // admin_msg_edit
-                if (preg_match('#^/admin/msg/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_msg_edit')), array (  '_controller' => 'Admin\\ManageBundle\\Controller\\MsgController::editAction',));
-                }
-
-                // admin_msg_update
-                if (preg_match('#^/admin/msg/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                        $allow = array_merge($allow, array('POST', 'PUT'));
-                        goto not_admin_msg_update;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_msg_update')), array (  '_controller' => 'Admin\\ManageBundle\\Controller\\MsgController::updateAction',));
-                }
-                not_admin_msg_update:
-
-                // admin_msg_delete
-                if (preg_match('#^/admin/msg/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                        $allow = array_merge($allow, array('POST', 'DELETE'));
-                        goto not_admin_msg_delete;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_msg_delete')), array (  '_controller' => 'Admin\\ManageBundle\\Controller\\MsgController::deleteAction',));
-                }
-                not_admin_msg_delete:
-
-            }
-
-            if (0 === strpos($pathinfo, '/admin/orders')) {
-                // admin_orders
-                if (rtrim($pathinfo, '/') === '/admin/orders') {
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'admin_orders');
-                    }
-
-                    return array (  '_controller' => 'Admin\\ManageBundle\\Controller\\OrdersController::indexAction',  '_route' => 'admin_orders',);
-                }
-
-                // admin_orders_show
-                if (preg_match('#^/admin/orders/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_orders_show')), array (  '_controller' => 'Admin\\ManageBundle\\Controller\\OrdersController::showAction',));
-                }
-
-                // admin_orders_new
-                if ($pathinfo === '/admin/orders/new') {
-                    return array (  '_controller' => 'Admin\\ManageBundle\\Controller\\OrdersController::newAction',  '_route' => 'admin_orders_new',);
-                }
-
-                // admin_orders_create
-                if ($pathinfo === '/admin/orders/create') {
-                    if ($this->context->getMethod() != 'POST') {
-                        $allow[] = 'POST';
-                        goto not_admin_orders_create;
-                    }
-
-                    return array (  '_controller' => 'Admin\\ManageBundle\\Controller\\OrdersController::createAction',  '_route' => 'admin_orders_create',);
-                }
-                not_admin_orders_create:
-
-                // admin_orders_edit
-                if (preg_match('#^/admin/orders/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_orders_edit')), array (  '_controller' => 'Admin\\ManageBundle\\Controller\\OrdersController::editAction',));
-                }
-
-                // admin_orders_update
-                if (preg_match('#^/admin/orders/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                        $allow = array_merge($allow, array('POST', 'PUT'));
-                        goto not_admin_orders_update;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_orders_update')), array (  '_controller' => 'Admin\\ManageBundle\\Controller\\OrdersController::updateAction',));
-                }
-                not_admin_orders_update:
-
-                // admin_orders_delete
-                if (preg_match('#^/admin/orders/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                        $allow = array_merge($allow, array('POST', 'DELETE'));
-                        goto not_admin_orders_delete;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_orders_delete')), array (  '_controller' => 'Admin\\ManageBundle\\Controller\\OrdersController::deleteAction',));
-                }
-                not_admin_orders_delete:
-
-            }
-
-            if (0 === strpos($pathinfo, '/admin/user')) {
-                // admin_user
-                if (rtrim($pathinfo, '/') === '/admin/user') {
-                    if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'admin_user');
-                    }
-
-                    return array (  '_controller' => 'Admin\\ManageBundle\\Controller\\UserController::indexAction',  '_route' => 'admin_user',);
-                }
-
-                // admin_user_show
-                if (preg_match('#^/admin/user/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_user_show')), array (  '_controller' => 'Admin\\ManageBundle\\Controller\\UserController::showAction',));
-                }
-
-                // admin_user_new
-                if ($pathinfo === '/admin/user/new') {
-                    return array (  '_controller' => 'Admin\\ManageBundle\\Controller\\UserController::newAction',  '_route' => 'admin_user_new',);
-                }
-
-                // admin_user_create
-                if ($pathinfo === '/admin/user/create') {
-                    if ($this->context->getMethod() != 'POST') {
-                        $allow[] = 'POST';
-                        goto not_admin_user_create;
-                    }
-
-                    return array (  '_controller' => 'Admin\\ManageBundle\\Controller\\UserController::createAction',  '_route' => 'admin_user_create',);
-                }
-                not_admin_user_create:
-
-                // admin_user_edit
-                if (preg_match('#^/admin/user/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_user_edit')), array (  '_controller' => 'Admin\\ManageBundle\\Controller\\UserController::editAction',));
-                }
-
-                // admin_user_update
-                if (preg_match('#^/admin/user/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
-                        $allow = array_merge($allow, array('POST', 'PUT'));
-                        goto not_admin_user_update;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_user_update')), array (  '_controller' => 'Admin\\ManageBundle\\Controller\\UserController::updateAction',));
-                }
-                not_admin_user_update:
-
-                // admin_user_delete
-                if (preg_match('#^/admin/user/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
-                    if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
-                        $allow = array_merge($allow, array('POST', 'DELETE'));
-                        goto not_admin_user_delete;
-                    }
-
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_user_delete')), array (  '_controller' => 'Admin\\ManageBundle\\Controller\\UserController::deleteAction',));
-                }
-                not_admin_user_delete:
-
-            }
-
-        }
-
         // homepage
         if (rtrim($pathinfo, '/') === '') {
             if (substr($pathinfo, -1) !== '/') {
@@ -631,6 +379,288 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'ibw_orders_delete')), array (  '_controller' => 'Ibw\\JobeetBundle\\Controller\\OrdersController::deleteAction',));
         }
         not_ibw_orders_delete:
+
+        if (0 === strpos($pathinfo, '/manager')) {
+            // admin_manage_homepage
+            if (rtrim($pathinfo, '/') === '/manager') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'admin_manage_homepage');
+                }
+
+                return array (  '_controller' => 'Admin\\ManageBundle\\Controller\\GoodsController::indexAction',  '_route' => 'admin_manage_homepage',);
+            }
+
+            if (0 === strpos($pathinfo, '/manager/log')) {
+                if (0 === strpos($pathinfo, '/manager/login')) {
+                    // admin_login
+                    if ($pathinfo === '/manager/login') {
+                        return array (  '_controller' => 'Admin\\ManageBundle\\Controller\\DefaultController::indexAction',  '_route' => 'admin_login',);
+                    }
+
+                    // admin_login_check
+                    if ($pathinfo === '/manager/login_check') {
+                        if ($this->context->getMethod() != 'POST') {
+                            $allow[] = 'POST';
+                            goto not_admin_login_check;
+                        }
+
+                        return array (  '_controller' => 'Admin\\ManageBundle\\Controller\\DefaultController::login_checkAction',  '_route' => 'admin_login_check',);
+                    }
+                    not_admin_login_check:
+
+                }
+
+                // admin_logout
+                if ($pathinfo === '/manager/logout') {
+                    return array('_route' => 'admin_logout');
+                }
+
+            }
+
+            if (0 === strpos($pathinfo, '/manager/m_')) {
+                if (0 === strpos($pathinfo, '/manager/m_goods')) {
+                    // admin_goods
+                    if (rtrim($pathinfo, '/') === '/manager/m_goods') {
+                        if (substr($pathinfo, -1) !== '/') {
+                            return $this->redirect($pathinfo.'/', 'admin_goods');
+                        }
+
+                        return array (  '_controller' => 'Admin\\ManageBundle\\Controller\\GoodsController::indexAction',  '_route' => 'admin_goods',);
+                    }
+
+                    // admin_goods_show
+                    if (preg_match('#^/manager/m_goods/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_goods_show')), array (  '_controller' => 'Admin\\ManageBundle\\Controller\\GoodsController::showAction',));
+                    }
+
+                    // admin_goods_new
+                    if ($pathinfo === '/manager/m_goods/new') {
+                        return array (  '_controller' => 'Admin\\ManageBundle\\Controller\\GoodsController::newAction',  '_route' => 'admin_goods_new',);
+                    }
+
+                    // admin_goods_create
+                    if ($pathinfo === '/manager/m_goods/create') {
+                        if ($this->context->getMethod() != 'POST') {
+                            $allow[] = 'POST';
+                            goto not_admin_goods_create;
+                        }
+
+                        return array (  '_controller' => 'Admin\\ManageBundle\\Controller\\GoodsController::createAction',  '_route' => 'admin_goods_create',);
+                    }
+                    not_admin_goods_create:
+
+                    // admin_goods_edit
+                    if (preg_match('#^/manager/m_goods/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_goods_edit')), array (  '_controller' => 'Admin\\ManageBundle\\Controller\\GoodsController::editAction',));
+                    }
+
+                    // admin_goods_update
+                    if (preg_match('#^/manager/m_goods/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                            $allow = array_merge($allow, array('POST', 'PUT'));
+                            goto not_admin_goods_update;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_goods_update')), array (  '_controller' => 'Admin\\ManageBundle\\Controller\\GoodsController::updateAction',));
+                    }
+                    not_admin_goods_update:
+
+                    // admin_goods_delete
+                    if (preg_match('#^/manager/m_goods/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
+                            $allow = array_merge($allow, array('POST', 'DELETE'));
+                            goto not_admin_goods_delete;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_goods_delete')), array (  '_controller' => 'Admin\\ManageBundle\\Controller\\GoodsController::deleteAction',));
+                    }
+                    not_admin_goods_delete:
+
+                }
+
+                if (0 === strpos($pathinfo, '/manager/m_msg')) {
+                    // admin_msg
+                    if (rtrim($pathinfo, '/') === '/manager/m_msg') {
+                        if (substr($pathinfo, -1) !== '/') {
+                            return $this->redirect($pathinfo.'/', 'admin_msg');
+                        }
+
+                        return array (  '_controller' => 'Admin\\ManageBundle\\Controller\\MsgController::indexAction',  '_route' => 'admin_msg',);
+                    }
+
+                    // admin_msg_show
+                    if (preg_match('#^/manager/m_msg/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_msg_show')), array (  '_controller' => 'Admin\\ManageBundle\\Controller\\MsgController::showAction',));
+                    }
+
+                    // admin_msg_new
+                    if ($pathinfo === '/manager/m_msg/new') {
+                        return array (  '_controller' => 'Admin\\ManageBundle\\Controller\\MsgController::newAction',  '_route' => 'admin_msg_new',);
+                    }
+
+                    // admin_msg_create
+                    if ($pathinfo === '/manager/m_msg/create') {
+                        if ($this->context->getMethod() != 'POST') {
+                            $allow[] = 'POST';
+                            goto not_admin_msg_create;
+                        }
+
+                        return array (  '_controller' => 'Admin\\ManageBundle\\Controller\\MsgController::createAction',  '_route' => 'admin_msg_create',);
+                    }
+                    not_admin_msg_create:
+
+                    // admin_msg_edit
+                    if (preg_match('#^/manager/m_msg/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_msg_edit')), array (  '_controller' => 'Admin\\ManageBundle\\Controller\\MsgController::editAction',));
+                    }
+
+                    // admin_msg_update
+                    if (preg_match('#^/manager/m_msg/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                            $allow = array_merge($allow, array('POST', 'PUT'));
+                            goto not_admin_msg_update;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_msg_update')), array (  '_controller' => 'Admin\\ManageBundle\\Controller\\MsgController::updateAction',));
+                    }
+                    not_admin_msg_update:
+
+                    // admin_msg_delete
+                    if (preg_match('#^/manager/m_msg/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
+                            $allow = array_merge($allow, array('POST', 'DELETE'));
+                            goto not_admin_msg_delete;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_msg_delete')), array (  '_controller' => 'Admin\\ManageBundle\\Controller\\MsgController::deleteAction',));
+                    }
+                    not_admin_msg_delete:
+
+                }
+
+                if (0 === strpos($pathinfo, '/manager/m_orders')) {
+                    // admin_orders
+                    if (rtrim($pathinfo, '/') === '/manager/m_orders') {
+                        if (substr($pathinfo, -1) !== '/') {
+                            return $this->redirect($pathinfo.'/', 'admin_orders');
+                        }
+
+                        return array (  '_controller' => 'Admin\\ManageBundle\\Controller\\OrdersController::indexAction',  '_route' => 'admin_orders',);
+                    }
+
+                    // admin_orders_show
+                    if (preg_match('#^/manager/m_orders/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_orders_show')), array (  '_controller' => 'Admin\\ManageBundle\\Controller\\OrdersController::showAction',));
+                    }
+
+                    // admin_orders_new
+                    if ($pathinfo === '/manager/m_orders/new') {
+                        return array (  '_controller' => 'Admin\\ManageBundle\\Controller\\OrdersController::newAction',  '_route' => 'admin_orders_new',);
+                    }
+
+                    // admin_orders_create
+                    if ($pathinfo === '/manager/m_orders/create') {
+                        if ($this->context->getMethod() != 'POST') {
+                            $allow[] = 'POST';
+                            goto not_admin_orders_create;
+                        }
+
+                        return array (  '_controller' => 'Admin\\ManageBundle\\Controller\\OrdersController::createAction',  '_route' => 'admin_orders_create',);
+                    }
+                    not_admin_orders_create:
+
+                    // admin_orders_edit
+                    if (preg_match('#^/manager/m_orders/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_orders_edit')), array (  '_controller' => 'Admin\\ManageBundle\\Controller\\OrdersController::editAction',));
+                    }
+
+                    // admin_orders_update
+                    if (preg_match('#^/manager/m_orders/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                            $allow = array_merge($allow, array('POST', 'PUT'));
+                            goto not_admin_orders_update;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_orders_update')), array (  '_controller' => 'Admin\\ManageBundle\\Controller\\OrdersController::updateAction',));
+                    }
+                    not_admin_orders_update:
+
+                    // admin_orders_delete
+                    if (preg_match('#^/manager/m_orders/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
+                            $allow = array_merge($allow, array('POST', 'DELETE'));
+                            goto not_admin_orders_delete;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_orders_delete')), array (  '_controller' => 'Admin\\ManageBundle\\Controller\\OrdersController::deleteAction',));
+                    }
+                    not_admin_orders_delete:
+
+                }
+
+                if (0 === strpos($pathinfo, '/manager/m_user')) {
+                    // admin_user
+                    if (rtrim($pathinfo, '/') === '/manager/m_user') {
+                        if (substr($pathinfo, -1) !== '/') {
+                            return $this->redirect($pathinfo.'/', 'admin_user');
+                        }
+
+                        return array (  '_controller' => 'Admin\\ManageBundle\\Controller\\UserController::indexAction',  '_route' => 'admin_user',);
+                    }
+
+                    // admin_user_show
+                    if (preg_match('#^/manager/m_user/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_user_show')), array (  '_controller' => 'Admin\\ManageBundle\\Controller\\UserController::showAction',));
+                    }
+
+                    // admin_user_new
+                    if ($pathinfo === '/manager/m_user/new') {
+                        return array (  '_controller' => 'Admin\\ManageBundle\\Controller\\UserController::newAction',  '_route' => 'admin_user_new',);
+                    }
+
+                    // admin_user_create
+                    if ($pathinfo === '/manager/m_user/create') {
+                        if ($this->context->getMethod() != 'POST') {
+                            $allow[] = 'POST';
+                            goto not_admin_user_create;
+                        }
+
+                        return array (  '_controller' => 'Admin\\ManageBundle\\Controller\\UserController::createAction',  '_route' => 'admin_user_create',);
+                    }
+                    not_admin_user_create:
+
+                    // admin_user_edit
+                    if (preg_match('#^/manager/m_user/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_user_edit')), array (  '_controller' => 'Admin\\ManageBundle\\Controller\\UserController::editAction',));
+                    }
+
+                    // admin_user_update
+                    if (preg_match('#^/manager/m_user/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                            $allow = array_merge($allow, array('POST', 'PUT'));
+                            goto not_admin_user_update;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_user_update')), array (  '_controller' => 'Admin\\ManageBundle\\Controller\\UserController::updateAction',));
+                    }
+                    not_admin_user_update:
+
+                    // admin_user_delete
+                    if (preg_match('#^/manager/m_user/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                        if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
+                            $allow = array_merge($allow, array('POST', 'DELETE'));
+                            goto not_admin_user_delete;
+                        }
+
+                        return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_user_delete')), array (  '_controller' => 'Admin\\ManageBundle\\Controller\\UserController::deleteAction',));
+                    }
+                    not_admin_user_delete:
+
+                }
+
+            }
+
+        }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
     }
