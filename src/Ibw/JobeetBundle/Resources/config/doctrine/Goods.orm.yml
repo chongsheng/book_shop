@@ -1,5 +1,6 @@
 Ibw\JobeetBundle\Entity\Goods:
     type: entity
+    repositoryClass: Ibw\JobeetBundle\Repository\GoodsRepository
     table: goods
     fields:
         id:

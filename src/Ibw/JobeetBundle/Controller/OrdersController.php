@@ -61,9 +61,14 @@ class OrdersController extends Controller
      */
     public function newAction()
     {
-        $get_good_id  =  $this->getRequest()->get('good_id');
+        $get_good_id  =  $this->getRequest()->get('good');
+        $good = $this->getDoctrine()->getManager()->getRepository("IbwJobeetBundle:Goods")->find($get_good_id);
+        
         $entity = new Orders();
         $entity->setGoodId($get_good_id);
+        $entity->setName($good->getName());
+         $entity->setPrice($good->getPrice());
+         
         $form   = $this->createForm(new OrdersType(), $entity);
        
         return $this->render('IbwJobeetBundle:Orders:new.html.twig', array(

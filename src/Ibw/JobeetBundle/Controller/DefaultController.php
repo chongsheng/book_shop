@@ -14,22 +14,25 @@ class DefaultController extends Controller {
          * @return type
          */
     public function indexAction(){
-        $session = $this->getRequest()->getSession();
-        //echo $session->get('user_name');exit;
-		return $this->render ( 'IbwJobeetBundle:Default:index.html.twig'  );
-    }
-	// ...
-	public function loginAction() {
-		return $this->render ( 'IbwJobeetBundle:Default:login.html.twig');
-	}
-	
-	
-	public function changeLanguageAction()
-	{
-		$language = $this->getRequest()->get('language');
-		return $this->redirect($this->generateUrl('ibw_jobeet_homepage', array('_locale' => $language)));
-	}
+        $em = $this->getDoctrine()->getManager();
         
+        $goods = $em->getRepository('IbwJobeetBundle:Goods')->get_goods();
+        
+        return $this->render ( 'IbwJobeetBundle:Default:index.html.twig',array(
+            "goods"=>$goods
+        )  );
+    }
+	
+    public function loginAction() {
+            return $this->render ( 'IbwJobeetBundle:Default:login.html.twig');
+    }
+    
+    public function changeLanguageAction()
+    {
+            $language = $this->getRequest()->get('language');
+            return $this->redirect($this->generateUrl('ibw_jobeet_homepage', array('_locale' => $language)));
+    }
+    
     public function login_checkAction(){
             
            $get_user_name = trim($this->getRequest()->get('_username'));
@@ -47,8 +50,7 @@ class DefaultController extends Controller {
                 $session = $this->getRequest()->getSession();
                 $session->set('user_id',$entity->getId());
                 $session->set('user_name',$entity->getUsername());
-                
-                //return $this->render ( 'IbwJobeetBundle:Default:index.html.twig');
+               
                 return $this->redirect($this->generateUrl('homepage'));
             }
            

@@ -22,7 +22,6 @@ class UserController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $entities = $em->getRepository('IbwJobeetBundle:User')->findAll();
 
         return $this->render('IbwJobeetBundle:User:index.html.twig', array(

@@ -121,25 +121,48 @@ class __TwigTemplate_8180dc35a938ef97905eee5c76c8618e extends Twig_Template
     </nav>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
+    
     <div class=\"jumbotron\">
       <div class=\"container\">
         <h1>Hello, world!</h1>
         <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
         <p><a class=\"btn btn-primary btn-lg\" role=\"button\"  href=\"";
-        // line 72
+        // line 73
         echo $this->env->getExtension('routing')->getPath("ibw_msg_new");
         echo "\">留言 &raquo;</a></p>
       </div>
     </div>
 
     <div class=\"container\">
-      <!-- Example row of columns -->
+      <!-- Example row of goods -->
       <div class=\"row\">
-        <div class=\"col-md-4\">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class=\"btn btn-default\" href=\"#\" role=\"button\">View details &raquo;</a></p>
-        </div>
+          ";
+        // line 80
+        $context['_parent'] = (array) $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["goods"]) ? $context["goods"] : $this->getContext($context, "goods")));
+        foreach ($context['_seq'] as $context["_key"] => $context["good"]) {
+            echo "  
+            <div class=\"col-md-4\">
+              <h2>";
+            // line 82
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["good"]) ? $context["good"] : $this->getContext($context, "good")), "name"), "html", null, true);
+            echo "</h2>
+              <p>";
+            // line 83
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["good"]) ? $context["good"] : $this->getContext($context, "good")), "demo"), "html", null, true);
+            echo " </p>
+              <p><a class=\"btn btn-default\" href=\"";
+            // line 84
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("ibw_goods_show", array("id" => $this->getAttribute((isset($context["good"]) ? $context["good"] : $this->getContext($context, "good")), "id"))), "html", null, true);
+            echo "\" role=\"button\">View details &raquo;</a></p>
+            </div>
+         ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['good'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 87
+        echo "         
         <div class=\"col-md-4\">
           <h2>Heading</h2>
           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
@@ -151,9 +174,8 @@ class __TwigTemplate_8180dc35a938ef97905eee5c76c8618e extends Twig_Template
           <p><a class=\"btn btn-default\" href=\"#\" role=\"button\">View details &raquo;</a></p>
         </div>
       </div>
-
+<!-- end goods list -->
       <hr>
-
       <footer>
         <p>&copy; Company 2014</p>
       </footer>
@@ -164,11 +186,11 @@ class __TwigTemplate_8180dc35a938ef97905eee5c76c8618e extends Twig_Template
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src=\"";
-        // line 107
+        // line 110
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/ibwjobeet/js/jquery.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 108
+        // line 111
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/ibwjobeet/js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
@@ -189,6 +211,6 @@ class __TwigTemplate_8180dc35a938ef97905eee5c76c8618e extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  172 => 108,  168 => 107,  130 => 72,  116 => 60,  108 => 58,  102 => 55,  96 => 53,  94 => 52,  79 => 42,  73 => 41,  68 => 39,  64 => 38,  57 => 34,  34 => 14,  19 => 1,);
+        return array (  194 => 111,  190 => 110,  165 => 87,  156 => 84,  152 => 83,  148 => 82,  141 => 80,  131 => 73,  116 => 60,  108 => 58,  102 => 55,  96 => 53,  94 => 52,  79 => 42,  73 => 41,  68 => 39,  64 => 38,  57 => 34,  34 => 14,  19 => 1,);
     }
 }

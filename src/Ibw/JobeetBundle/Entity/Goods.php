@@ -97,4 +97,82 @@ class Goods
     }
 
 
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Goods
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    
+        return $this;
+    }
+
+    /**
+     * Set price
+     *
+     * @param float $price
+     * @return Goods
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    
+        return $this;
+    }
+
+    /**
+     * Set img
+     *
+     * @param string $img
+     * @return Goods
+     */
+    public function setImg($img)
+    {
+        $this->img = $img;
+    
+        return $this;
+    }
+
+    /**
+     * Set issell
+     *
+     * @param integer $issell
+     * @return Goods
+     */
+    public function setIssell($issell)
+    {
+        $this->issell = $issell;
+    
+        return $this;
+    }
+
+    /**
+     * Set demo
+     *
+     * @param string $demo
+     * @return Goods
+     */
+    public function setDemo($demo)
+    {
+        $this->demo = $demo;
+    
+        return $this;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return Goods
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    
+        return $this;
+    }
 }
